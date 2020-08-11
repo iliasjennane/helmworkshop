@@ -1,0 +1,12 @@
+version: '3'
+services: 
+  ui:
+    image: simpleweb:0.1
+    ports: 
+     - "8000:80"
+    depends_on: 
+     - api
+  api:
+    image: simpleapi:0.1
+    ports: 
+     - "7000:80"
