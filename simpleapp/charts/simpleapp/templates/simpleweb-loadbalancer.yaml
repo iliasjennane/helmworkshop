@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simpleweb
+spec:
+  selector:
+    app: simpleweb
+  type: LoadBalancer
+  ports:
+  - name: simpleweb-externalaccess
+    port: 7000
+    targetPort: 80
