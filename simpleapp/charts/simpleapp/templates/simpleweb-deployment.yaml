@@ -27,5 +27,5 @@ spec:
             valueFrom:
               configMapKeyRef:
                 key: apiURL
-                name: simpleweb
+                name: {{ .Release.Name }}-{{ .Chart.Name }}-config
 
