@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: simpleapi
+  name: {{ .Release.Name }}-{{ .Chart.Name }}
 spec:
   selector:
-    app: simpleapi
+    app: {{ .Release.Name }}-{{ .Chart.Name }}
   type: ClusterIP
   ports:
   - port: 80

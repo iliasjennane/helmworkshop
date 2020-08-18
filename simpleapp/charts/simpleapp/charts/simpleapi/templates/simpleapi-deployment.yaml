@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simpleapi
+  name: {{ .Release.Name }}-{{ .Chart.Name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: simpleapi
+      app: {{ .Release.Name }}-{{ .Chart.Name }}
   template:
     metadata:
       labels:
-        app: simpleapi
+        app: {{ .Release.Name }}-{{ .Chart.Name }}
     spec:
       containers:
-      - name: simpleapi
-        image: simpleapi:latest
+      - name: {{ .Release.Name }}-{{ .Chart.Name }}
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: IfNotPresent
         resources:
           limits:

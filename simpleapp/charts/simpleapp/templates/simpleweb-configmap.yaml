@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-{{ .Chart.Name }}-config
 data:
-  apiURL: {{ .Values.config.apiUrl }}
+  apiUrl: {{ .Release.Name }}-{{ .Values.config.apiUrl }}

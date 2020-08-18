@@ -1,2 +1,8 @@
 config:
   apiUrl: "simpleapi"
+replicaCount: 1
+image:
+  repository: "simpleweb"
+  tag: "latest"
+service:
+  externalPort: "8080"
