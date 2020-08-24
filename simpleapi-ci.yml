@@ -3,17 +3,29 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- master
+  branches:
+    include:
+    - master
+    - releases/*
+    - feature/*
+    exclude:
+    - releases/old*
+    - feature/*-working
+  paths:
+    include:
+    - '/simpleapp/simpleapi/*' 
+    exclude:
+    - '/simpleapp/simpleweb/*' 
 
 resources:
 - repo: self
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '2f213c50-8f2f-429e-b239-d50716eec53c'
-  imageRepository: 'simpleapi'
-  containerRegistry: 'iliasjsvcscr.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  dockerRegistryServiceConnection: 'f4227703-3d5b-410c-95fd-a9b0ffc3868b'
+  imageRepository: 'helmworkshopapi'
+  containerRegistry: 'iliasjacr.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/simpleapp/simpleapi/Dockerfile'
   tag: '$(Build.BuildId)'
   
   # Agent VM image name
@@ -21,7 +33,7 @@ variables:
 
 stages:
 - stage: Build
-  displayName: Build and push stage the api image
+  displayName: Build and push stage
   jobs:  
   - job: Build
     displayName: Build
@@ -36,5 +48,5 @@ stages:
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
-          $(tag)
-          latest
+             $(Build.BuildId)
+             latest
