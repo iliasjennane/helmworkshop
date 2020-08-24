@@ -9,7 +9,7 @@ trigger:
     - feature/*-working
   paths:
     include:
-    - '/simpleapp/*' 
+    - '*' 
     exclude:
     - '/simpleapp/simpleapi/*' 
     - '/simpleapp/simpleweb/*' 
@@ -31,10 +31,10 @@ stages:
            helmVersionToInstall: 'latest'
 
        - task: HelmDeploy@0
-         displayName: 'create helm package for simpleweb'
+         displayName: 'create helm package for simpleapp - api and web'
          inputs:
            command: 'package'
-           chartPath: simpleapp/charts/simpleweb
+           chartPath: simpleapp/charts/simplapp
            destination: $(Build.ArtifactStagingDirectory)
            updateDependency: true
            save: false
