@@ -1,0 +1,49 @@
+trigger:
+  branches:
+    include:
+    - master
+    - releases/*
+    - feature/*
+    exclude:
+    - releases/old*
+    - feature/*-working
+  paths:
+    include:
+    - '/simpleapp/*' 
+    exclude:
+    - '/simpleapp/simpleapi/*' 
+    - '/simpleapp/simpleweb/*' 
+
+resources:
+- repo: self
+
+pool:
+  vmImage: 'ubuntu-latest'
+stages:
+- stage: 'Package'
+  displayName: 'Package the helm chart'
+  jobs:
+   - job: PackageHelmChart
+     steps:
+       - task: HelmInstaller@1
+         displayName: 'Install Helm'
+         inputs:
+           helmVersionToInstall: 'latest'
+
+       - task: HelmDeploy@0
+         displayName: 'create helm package for simpleweb'
+         inputs:
+           command: 'package'
+           chartPath: charts/simpleweb
+           destination: $(Build.ArtifactStagingDirectory)
+           updateDependency: true
+           save: false
+           arguments: --version '1.0.$(Build.BuildId)'
+
+       - task: PublishBuildArtifacts@1
+         displayName: 'publish simpleweb helm package for simpleweb as a pipeline artifact'
+         inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'
+
