@@ -34,7 +34,7 @@ stages:
          displayName: 'create helm package for simpleapp - api and web'
          inputs:
            command: 'package'
-           chartPath: /simpleapp/charts/simplapp
+           chartPath: simpleapp/charts/simpleapp/
            destination: $(Build.ArtifactStagingDirectory)
            updateDependency: true
            save: false
