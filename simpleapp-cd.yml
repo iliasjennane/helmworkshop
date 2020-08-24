@@ -38,7 +38,7 @@ stages:
            destination: $(Build.ArtifactStagingDirectory)
            updateDependency: true
            save: false
-           arguments: --version '1.$(Build.BuildNumber)' --app-version '1.$(Build.Id)'
+           arguments: --version '1.$(Build.BuildNumber)' 
 
        - task: PublishBuildArtifacts@1
          displayName: 'publish simpleweb helm package for simpleweb as a pipeline artifact'
