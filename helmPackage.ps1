@@ -7,6 +7,6 @@ Param(
 
 )
 
-echo "helm package simpleapp --dependency-update --destination $packageDestinationPath --version $version $chartSourcePath"
-helm package simpleapp --dependency-update --destination $packageDestinationPath --version $version $chartSourcePath
+echo "helm package  --dependency-update --destination $packageDestinationPath --version $version $chartSourcePath"
+helm package  --dependency-update --destination $packageDestinationPath --version $version $chartSourcePath
 
