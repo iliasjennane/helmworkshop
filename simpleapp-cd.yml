@@ -32,10 +32,10 @@ stages:
 
        - task: PowerShell@2
          inputs:
-         targetType: 'filePath' 
-         filePath: helmPackage.ps1
-         arguments: -packageDestinationPath $(Build.ArtifactStagingDirectory) -chartSourcePath '/simpleapp/charts/simpleapp' -version '1.$(Build.BuildNumber)' -appVersion $(Build.BuildNumber)
-         workingDirectory: $(Build.SourcesDirectory)
+           targetType: 'filePath' 
+           filePath: helmPackage.ps1
+           arguments: -packageDestinationPath $(Build.ArtifactStagingDirectory) -chartSourcePath '/simpleapp/charts/simpleapp' -version '1.$(Build.BuildNumber)' -appVersion $(Build.BuildNumber)
+           workingDirectory: $(Build.SourcesDirectory)
 
        - task: PublishBuildArtifacts@1
          displayName: 'publish simpleweb helm package for simpleweb as a pipeline artifact'
