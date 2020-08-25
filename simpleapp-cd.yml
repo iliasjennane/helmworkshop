@@ -34,7 +34,7 @@ stages:
          inputs:
            targetType: 'filePath' 
            filePath: helmPackage.ps1
-           arguments: -packageDestinationPath $(Build.ArtifactStagingDirectory) -chartSourcePath '/simpleapp/charts/simpleapp' -version '1.$(Build.BuildNumber)' -appVersion $(Build.BuildNumber)
+           arguments: -packageDestinationPath $(Build.ArtifactStagingDirectory) -chartSourcePath '$(Build.SourcesDirectory)/simpleapp/charts/simpleapp' -version '1.$(Build.BuildNumber)' -appVersion '$(Build.BuildNumber)'
            workingDirectory: $(Build.SourcesDirectory)
 
        - task: PublishBuildArtifacts@1
