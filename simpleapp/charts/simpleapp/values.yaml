@@ -6,3 +6,4 @@ image:
   tag: "latest"
 service:
   externalPort: "8080"
+sqlserver.enabled: false

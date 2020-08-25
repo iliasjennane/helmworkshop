@@ -3,3 +3,9 @@ appVersion: "0.1"
 description: A helm chart for deploying simpleApp - web and api
 version: 0.1.0
 name: simpleapp
+dependencies:
+ - name: mssql-linux
+   version: 0.11.2
+   repository: https://kubernetes-charts.storage.googleapis.com/
+   alias: sqlserver
+   condition: sqlserver.enabled
