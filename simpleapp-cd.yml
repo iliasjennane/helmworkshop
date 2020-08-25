@@ -69,7 +69,7 @@ stages:
             install: true
             chartName: '$(System.ArtifactsDirectory)/drop/simpleapp-1.$(Build.BuildNumber).tgz'
             releaseName: simpleapp
-            overrideValues: image.repository=iliasjacr.azurecr.io/simpleweb,image.tag=1.0,simpleapi.image.repository=iliasjacr.azurecr.io/simpleapi,simpleapi.image.tag=1.0,service.externalPort=80
+            overrideValues: image.repository=iliasjacr.azurecr.io/simpleweb,image.tag=latest,simpleapi.image.repository=iliasjacr.azurecr.io/simpleapi,simpleapi.image.tag=latest,service.externalPort=80
 - stage: 'DeployToQA'
   displayName: 'Deploy simpleweb and simpleapi to QA'
   jobs:
@@ -97,5 +97,5 @@ stages:
             install: true
             chartName: '$(System.ArtifactsDirectory)/drop/simpleapp-1.$(Build.BuildNumber).tgz'
             releaseName: simpleapp
-            overrideValues: image.repository=iliasjacr.azurecr.io/simpleweb,image.tag=1.0,simpleapi.image.repository=iliasjacr.azurecr.io/simpleapi,simpleapi.image.tag=1.0,service.externalPort=80
+            overrideValues: image.repository=iliasjacr.azurecr.io/simpleweb,image.tag=latest,simpleapi.image.repository=iliasjacr.azurecr.io/simpleapi,simpleapi.image.tag=latest,service.externalPort=80
 
