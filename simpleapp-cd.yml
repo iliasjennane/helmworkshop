@@ -68,6 +68,7 @@ stages:
             command: upgrade
             install: true
             chartPath: $(System.ArtifactsDirectory)/drop/
+            chartName: 'simpleapp-1.$(Build.BuildNumber).tgz'
             releaseName: simpleapp
 - stage: 'DeployToQA'
   displayName: 'Deploy simpleweb and simpleapi to QA'
@@ -94,6 +95,7 @@ stages:
             namespace: simpleapp-qa
             command: upgrade
             install: true
-            chartName: $(System.ArtifactsDirectory)/drop/
+            chartPath: $(System.ArtifactsDirectory)/drop/
+            chartName: 'simpleapp-1.$(Build.BuildNumber).tgz'
             releaseName: simpleapp
 
